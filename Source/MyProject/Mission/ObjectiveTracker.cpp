@@ -5,7 +5,4 @@
 
 // Add default functionality here for any IObjectiveTracker functions that are not pure virtual.
 
-bool IObjectiveTracker::IsObjectiveComplete()
-{
-	return false;
-}
+

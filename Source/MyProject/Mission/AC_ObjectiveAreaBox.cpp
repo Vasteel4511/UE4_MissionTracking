@@ -8,18 +8,18 @@ void UAC_ObjectiveAreaBox::BeginPlay()
 {
 	Super::BeginPlay();
 
-	HasPlayerEnteredBox = false;
+	IsPlayerInArea = false;
 
 	OnComponentBeginOverlap.AddDynamic(this, &UAC_ObjectiveAreaBox::OverlapStart);
+	OnComponentEndOverlap.AddDynamic(this, &UAC_ObjectiveAreaBox::OverlapEnd);
 }
 
-bool UAC_ObjectiveAreaBox::IsObjectiveComplete()
+bool UAC_ObjectiveAreaBox::IsObjectiveComplete_Implementation()
 {
-	return HasPlayerEnteredBox;
+	return IsPlayerInArea;
 }
 
-void UAC_ObjectiveAreaBox::OverlapStart(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
-	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void UAC_ObjectiveAreaBox::OverlapStart(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	ACharacter* player = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 
@@ -27,7 +27,20 @@ void UAC_ObjectiveAreaBox::OverlapStart(UPrimitiveComponent* OverlappedComponent
 	{
 		if (player == OtherActor)
 		{
-			HasPlayerEnteredBox = true;
+			IsPlayerInArea = true;
+		}
+	}
+}
+
+void UAC_ObjectiveAreaBox::OverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	ACharacter* player = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
+
+	if (player)
+	{
+		if (player == OtherActor)
+		{
+			IsPlayerInArea = false;
 		}
 	}
 }

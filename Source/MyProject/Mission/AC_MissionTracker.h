@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Mission/Mission.h"
+#include "ObjectiveTracker.h"
 #include "AC_MissionTracker.generated.h"
 
 
@@ -25,9 +26,14 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	UPROPERTY(BlueprintReadWrite)
 	FMission CurrentMission;
+	bool HasMission;
 
-	void TrackMissionProgress();
+	void StartMission(FMission mission);
 
+private:
+
+	void NextObjective();
+
+	UObject* currentObjectiveTracker;
 };

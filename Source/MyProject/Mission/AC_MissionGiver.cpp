@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AC_MissionGiver.h"
+#include "AC_MissionTracker.h"
 
 
 // Sets default values for this component's properties
@@ -30,5 +31,13 @@ void UAC_MissionGiver::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+}
+
+void UAC_MissionGiver::GiveMission(UAC_MissionTracker* recipient)
+{
+	if (IsValid(recipient))
+	{
+		recipient->StartMission(AvailableMission);
+	}
 }
 

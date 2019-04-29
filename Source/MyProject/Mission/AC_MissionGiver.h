@@ -7,6 +7,8 @@
 #include "Mission/Mission.h"
 #include "AC_MissionGiver.generated.h"
 
+class UAC_MissionTracker;
+
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class MYPROJECT_API UAC_MissionGiver : public UActorComponent
@@ -28,5 +30,8 @@ public:
 	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Mission")
 	/** Mission that is available from this Mission Giver component */
 	FMission AvailableMission;
+
+	UFUNCTION(BlueprintCallable)
+	void GiveMission(UAC_MissionTracker* recipient);
 	
 };

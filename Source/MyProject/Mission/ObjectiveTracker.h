@@ -23,5 +23,6 @@ class MYPROJECT_API IObjectiveTracker
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	
-	virtual bool IsObjectiveComplete();
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	bool IsObjectiveComplete();
 };
