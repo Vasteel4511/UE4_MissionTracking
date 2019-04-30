@@ -28,11 +28,10 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Mission")
-	/** Mission that is available from this Mission Giver component, configured in editor */
+	/** Mission that is available from this Mission Giver component */
 	FMission AvailableMission;
 
 	UFUNCTION(BlueprintCallable)
-	/** Call this to transfer AvailableMission to the UUC_MissionTracker recipient */
 	void GiveMission(UAC_MissionTracker* recipient);
 	
 };

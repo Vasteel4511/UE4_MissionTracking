@@ -13,7 +13,9 @@ class UObjectiveTracker : public UInterface
 	GENERATED_BODY()
 };
 
-/** Actors that need to be used as objective completion trackers need to implement this interface */
+/**
+ * 
+ */
 class MYPROJECT_API IObjectiveTracker
 {
 	GENERATED_BODY()
@@ -22,6 +24,5 @@ class MYPROJECT_API IObjectiveTracker
 public:
 	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	/** return whhether the objective that the implementer is tracking is complete or not */
 	bool IsObjectiveComplete();
 };

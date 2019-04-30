@@ -14,16 +14,12 @@ struct MYPROJECT_API FObjective
 public:
 
 	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Objective Config")
-	/** Name of objective */
 	FText Name;
 
 	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Objective Config")
-	/** Description of objective */
 	FText Description;
 
 	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Objective Config")
-	/** The actor responsible for deciding whether this objective is complete or not.
-	  * It must implement IObjectiveTracker, or contain a component that does. */
 	AActor* ObjectiveTrackingActor;
 };
 

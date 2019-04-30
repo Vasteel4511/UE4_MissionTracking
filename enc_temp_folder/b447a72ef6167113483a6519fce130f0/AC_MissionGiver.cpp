@@ -35,7 +35,6 @@ void UAC_MissionGiver::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 
 void UAC_MissionGiver::GiveMission(UAC_MissionTracker* recipient)
 {
-	/* recipient will usually be a UAC_MissionTracker component on the player */
 	if (IsValid(recipient))
 	{
 		recipient->StartMission(AvailableMission);
